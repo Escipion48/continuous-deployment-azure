@@ -61,12 +61,12 @@ jobs:
           java-version: '21'
 
       - name: Generate tag
-        run: echo "tag=$(date- +'%Y%m%d.%H%M%S')" > $GITHUB_OUTPUT
+        run: echo "tag=nightly-$(date- +'%Y%m%d.%H%M%S')" > $GITHUB_OUTPUT
         id: timestamp
 
       - name: Generate Docker image
         run: mvn spring-boot:build-image -DskipTests
-          -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USERNAME }}/posts:nightly-${{steps.timestamp.outputs.tag}}
+          -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USERNAME }}/posts:${{steps.timestamp.outputs.tag}}
 
       - name: Log in to DockerHub
         uses: docker/login-action@v2
@@ -75,4 +75,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to DockerHub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:nightly-${{steps.timestamp.outputs.tag}}
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/posts:${{steps.timestamp.outputs.tag}}
