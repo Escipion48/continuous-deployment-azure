@@ -1,4 +1,4 @@
-# He hecho el workflow basandome en la plantilla base de inicio proporcionada por github
+# He hecho el workflow basándome en la plantilla base de inicio proporcionada por GitHub
 
 name: Manual workflow
 
@@ -61,7 +61,7 @@ jobs:
           java-version: '21'
 
       - name: Generate tag
-        run: echo "tag=nightly-$(date- +'%Y%m%d.%H%M%S')" > $GITHUB_OUTPUT
+        run: echo "tag=nightly-$(date +'%Y%m%d.%H%M%S')" > $GITHUB_OUTPUT
         id: timestamp
 
       - name: Generate Docker image
