@@ -33,3 +33,15 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}, desde el sistema ${{matrix.so}}"
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Java 21
+      uses: actions/setup-java@v4
+      with:
+          java-version: '21'
+          distribution: 'temurin'
+
+    - name: Run Test
+      run: mvn test -Dtest="**/board/*Test" -DfailIfNoTests=false
