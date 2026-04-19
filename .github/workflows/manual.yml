@@ -6,7 +6,7 @@ name: Manual workflow
 # or API.
 on:
   schedule:
-    - cron: '0 2 * * *'  # Creo que a las 2 am es buena hora
+    - cron: '0 0 * * *'  # Creo que a las 2 am es buena hora
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
