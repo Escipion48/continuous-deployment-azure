@@ -5,12 +5,6 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Creo que a las 2 am es buena hora
   workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        default: 'World'
-        required: true
-        type: string
 
 jobs:
   tests:
